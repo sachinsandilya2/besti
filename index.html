@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #4a148c;
+            margin-bottom: 20px;
+            animation: fadeInZoom 1.5s ease-in-out;
+        }
+        .message {
+            font-size: 1.5rem;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 90%;
+            margin: 10px auto;
+            animation: fadeIn 1.5s ease-in-out;
+            opacity: 0;
+        }
+        button {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #d500f9;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #aa00ff;
+            transform: scale(1.1);
+        }
+        @keyframes fadeInZoom {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .message {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+            button {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Hey Bestie ❤️</h1>
+    <div class="message" id="message">Click the button to see my message!</div>
+    <button onclick="showMessage()">Show Message</button>
+
+    <script>
+        const messages = [
+            "Hey Bestie ❤️",
+            "I know you're upset with me, and that hurts me deeply. 😔",
+            "You mean the world to me, and I never want to lose your smile. 🥰",
+            "I'm truly sorry for my mistakes. I wish I could take them back. 😞",
+            "Your friendship is my biggest treasure. 🌟",
+            "Please forgive me. Let's bring back those endless laughs and happiness. 😊",
+            "Sending you all my love and a big hug. 🤗💕"
+        ];
+
+        let index = 0;
+
+        function showMessage() {
+            const messageDiv = document.getElementById("message");
+            if (index < messages.length) {
+                messageDiv.textContent = messages[index];
+                messageDiv.style.opacity = 0; // Reset opacity
+                messageDiv.style.animation = "none"; // Reset animation
+                void messageDiv.offsetWidth; // Trigger reflow for animation
+                messageDiv.style.animation = "fadeIn 1.5s ease-in-out";
+                messageDiv.style.opacity = 1;
+                index++;
+            } else {
+                messageDiv.textContent = "Let's forget the bad and cherish the good. You are my sunshine! ☀️💖";
+            }
+        }
+    </script>
+</body>
+</html>
